@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Minecraft 网页版 · 1.12.2 自托管零广告</title>
+    <!--
+      GitHub Pages SPA 回退脚本：
+      当直接访问 /minecraft-web/launch 或 /minecraft-web/play 时，
+      GitHub Pages 找不到对应文件会返回 404 并加载此 404.html。
+      此脚本将原始路径编码到 query string 后重定向到 index.html，
+      index.html 内的脚本再将其还原为正确的 SPA 路由。
+    -->
+    <script type="text/javascript">
+      var segmentCount = 1; // /minecraft-web/ 占 1 段
+      var l = window.location;
+      var pathSegments = l.pathname.split("/").filter(Boolean);
+      var redirect =
+        l.protocol +
+        "//" +
+        l.hostname +
+        (l.port ? ":" + l.port : "") +
+        pathSegments.slice(0, segmentCount).join("/") +
+        "/?p=/" +
+        pathSegments.slice(segmentCount).join("/") +
+        l.search +
+        l.hash;
+      l.replace(redirect);
+    </script>
+    <meta
+      http-equiv="refresh"
+      content="0; url=./index.html"
+    />
+  </head>
+  <body>
+    <p style="font-family: monospace">Redirecting…</p>
+  </body>
+</html>
